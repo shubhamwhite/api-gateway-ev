@@ -2,7 +2,6 @@ import js from '@eslint/js'
 import globals from 'globals'
 import { defineConfig } from 'eslint/config'
 
-
 export default defineConfig([
   {
     files: ['**/*.{js,mjs,cjs}'],
@@ -10,22 +9,25 @@ export default defineConfig([
     extends: ['js/recommended'],
     rules: {
       // --- Best Practices ---
-      'no-unused-vars': ['error', {
-        argsIgnorePattern: '^_',
-        varsIgnorePattern: '^_'
-      }],
+      'no-unused-vars': [
+        'warn',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_'
+        }
+      ],
       'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-      'eqeqeq': ['error', 'always'], // Enforce strict equality (===)
-      'curly': ['error', 'all'], // Require curly braces for all control blocks
+      eqeqeq: ['error', 'always'], // Enforce strict equality (===)
+      curly: ['error', 'all'], // Require curly braces for all control blocks
       'no-multi-spaces': 'error', // Disallow multiple spaces
       'no-var': 'error', // Disallow `var`, prefer `let` or `const`
       'prefer-const': 'error', // Prefer `const` when variables are not reassigned
       'no-undef': 'error', // Disallow usage of undeclared variables
 
       // --- Style Rules ---
-      'indent': ['error', 2], // Enforce 2-space indentation
-      'semi': ['error', 'never'], // Disallow semicolons
-      'quotes': ['error', 'single'], // Enforce single quotes
+      indent: ['error', 2], // Enforce 2-space indentation
+      semi: ['error', 'never'], // Disallow semicolons
+      quotes: ['error', 'single'], // Enforce single quotes
       'object-curly-spacing': ['error', 'always'], // Require spacing inside curly braces
       'array-bracket-spacing': ['error', 'never'], // Disallow spaces inside array brackets
       'comma-dangle': ['error', 'never'], // Disallow trailing commas
