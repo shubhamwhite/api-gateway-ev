@@ -6,8 +6,8 @@ const port = config.get('PORT') || 5000
 const server = gateway({
   routes: [
     {
-      prefix: '/api/v1/company',
-      target: 'http://localhost:3005/',
+      prefix: config.get('COMPANY_PREFIX'),
+      target: config.get('COMPANY_TARGET'),
       hooks: {
         onRequest(req, res) {
           color.bold(`Request received: ${req.method} ${req.url}`)
@@ -15,8 +15,8 @@ const server = gateway({
       }
     },
     {
-      prefix: '/api/v1/auth',
-      target: 'http://localhost:3004/',
+      prefix: config.get('AUTH_PREFIX'),
+      target: config.get('AUTH_TARGET'),
       hooks: {
         onRequest(req, res) {
           color.bold(`Request received: ${req.method} ${req.url}`)
