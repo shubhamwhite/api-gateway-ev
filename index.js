@@ -4,6 +4,12 @@ const config = require('./config')
 const port = config.get('PORT') || 5000
 
 const server = gateway({
+  middlewares: [
+    require('cors')({
+      origin: 'http://localhost:5173', // ✅ frontend origin
+      credentials: true
+    })
+  ],
   routes: [
     {
       prefix: config.get('COMPANY_PREFIX'),

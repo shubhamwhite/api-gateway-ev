@@ -17,6 +17,7 @@
   "dependencies": {
     "@polka/send-type": "^0.5.2",
     "cli-color": "^2.0.4",
+    "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "fast-gateway": "^4.1.0",
     "prettier": "^3.5.3"
