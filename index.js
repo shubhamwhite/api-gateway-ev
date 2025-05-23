@@ -35,7 +35,6 @@ const server = gateway({
 server.get('/gateway', (req, res) => {
   res.send('gateway is running')
 })
-
 ;(async () => {
   try {
     await server.start(port)
