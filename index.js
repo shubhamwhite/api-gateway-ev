@@ -6,11 +6,20 @@ const port = config.get('PORT') || 5000
 const server = gateway({
   middlewares: [
     require('cors')({
-      origin: 'http://localhost:5173', // ✅ frontend origin
+      origin: 'http://localhost:5173',
       credentials: true
     })
   ],
   routes: [
+    {
+      prefix: config.get('AUTH_PREFIX'),
+      target: config.get('AUTH_TARGET'),
+      hooks: {
+        onRequest(req, res) {
+          color.bold(`Request received: ${req.method} ${req.url}`)
+        }
+      }
+    },
     {
       prefix: config.get('COMPANY_PREFIX'),
       target: config.get('COMPANY_TARGET'),
@@ -21,8 +30,8 @@ const server = gateway({
       }
     },
     {
-      prefix: config.get('AUTH_PREFIX'),
-      target: config.get('AUTH_TARGET'),
+      prefix: config.get('USER_PREFIX'),
+      target: config.get('USER_TARGET'),
       hooks: {
         onRequest(req, res) {
           color.bold(`Request received: ${req.method} ${req.url}`)
